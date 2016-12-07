@@ -3,10 +3,10 @@ package agents;
 import java.util.ArrayList;
 import java.util.List;
 
-import Values.SelfEnhancement;
-import Values.SelfTranscendence;
-import Values.Value;
 import repast.simphony.random.RandomHelper;
+import values.SelfEnhancement;
+import values.SelfTranscendence;
+import values.Value;
 
 public class SocialAgent extends Agent {
     List<Value> values;

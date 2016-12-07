@@ -1,4 +1,4 @@
-package Values;
+package values;
 
 import ultimateValuesEclipse.Helper;
 

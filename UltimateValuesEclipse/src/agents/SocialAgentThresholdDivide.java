@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
-import Values.Fairness;
-import Values.Value;
-import Values.Wealth;
 import repast.simphony.random.RandomHelper;
 import ultimateValuesEclipse.Helper;
+import values.Fairness;
+import values.Value;
+import values.Wealth;
 
 /*
  * This social agent will have two values:

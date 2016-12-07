@@ -1,4 +1,4 @@
-package Values;
+package values;
 
 import repast.simphony.random.RandomHelper;
 

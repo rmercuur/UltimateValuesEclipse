@@ -1,13 +1,12 @@
-package Values;
+package values;
 
 import ultimateValuesEclipse.Helper;
 
-public class Wealth extends Value {
+public class SelfEnhancement extends Value {
 
-	public Wealth(double strengthWeigth) {
+	public SelfEnhancement(double strengthWeigth) {
 		super(strengthWeigth, Helper.getParams().getDouble("beta"), Helper.getParams().getDouble("k")); //Different implementation of using constuctor than before.
 	}
-	
 	
 
 	@Override
@@ -16,15 +15,15 @@ public class Wealth extends Value {
 	}
 
 	@Override
-	public double getGain(double result){
-		return result/100;
+	public double newSatisfaction(double result) {
+		return newSatisfactionFunction(Helper.getParams().getInteger("pieSize") -result);
+	}
+
+
+	@Override
+	public double getGain(double result) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
-	@Override
-	public double newSatisfaction(double result) {
-		return newSatisfactionFunction((result/100));
-	}
-
-
-
 }
