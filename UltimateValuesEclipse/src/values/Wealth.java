@@ -17,12 +17,12 @@ public class Wealth extends Value {
 
 	@Override
 	public double getGain(double result){
-		return result/100;
+		return result/1000;
 	}
 	
 	@Override
 	public double newSatisfaction(double result) {
-		return newSatisfactionFunction((result/100));
+		return newSatisfactionFunction((result/1000));
 	}
 
 
