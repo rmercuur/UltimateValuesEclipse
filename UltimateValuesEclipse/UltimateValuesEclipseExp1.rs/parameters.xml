@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+					<parameter name="randomSeed" displayName="Default Random Seed" type="int" 
+						defaultValue="__NULL__"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="agentCount" displayName="Number of Agents" type="int" 
+						defaultValue="32" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="beta" displayName="Beta" type="double" 
+						defaultValue="0.1" 
+						isReadOnly="true" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="k" displayName="K" type="double" 
+						defaultValue="0.5" 
+						isReadOnly="true" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="selfEnAvgStrength" displayName="Self Enhancement: Avarage Strength" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="true" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="selfTrAvgStrength" displayName="Self Transcedence: Avarage Strength" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="true" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="pieSize" displayName="Pie Size" type="int" 
+						defaultValue="100" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>		<parameter name="valueDifferenceMean" displayName="Difference in Value Strength (mu)" type="double" 
+						defaultValue="0.35" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="valueDifferenceSD" displayName="Difference in Value Strength (SD)" type="double" 
+						defaultValue="0.95" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="initialStrength" displayName="Initial Strength (AvarageReward:SumInitialQualities)" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="EndTime" displayName="Simulation End Time (Ticks)" type="int" 
+						defaultValue="1000" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="GUI" displayName="GUI" type="boolean" 
+						defaultValue="TRUE" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
+				<parameter name="equalInitialQuality" displayName="EqualInitialQuality" type="boolean" 
+						defaultValue="TRUE" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
+		
+		
+		
+		
+		</parameters>
+
+

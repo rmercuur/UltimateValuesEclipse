@@ -1,0 +1,3 @@
+"run","tick","LastRoundAvarageAccept"
+1,500.0,0.3125
+1,627.0,0.1875
