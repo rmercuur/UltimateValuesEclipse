@@ -26,7 +26,7 @@ public class SocialAgentThresholdDivide extends Agent {
 
     public SocialAgentThresholdDivide(int ID){
         super(ID);
-        double valueDifference = RandomHelper.createNormal(0.45, Helper.getParams().getDouble("valueDifferenceSD")).nextDouble();
+        double valueDifference = RandomHelper.createNormal(Helper.getParams().getDouble("valueDifferenceMean"), Helper.getParams().getDouble("valueDifferenceSD")).nextDouble();
         wealth =new Wealth(1+(valueDifference/2));
         fairness=new Fairness(1-(valueDifference/2));
         values =new ArrayList<Value>();
