@@ -26,8 +26,8 @@ public class SocialAgentThresholdDivide extends Agent {
 
     public SocialAgentThresholdDivide(int ID){
         super(ID);
-        double valueDifference = -1;
-        while(valueDifference < 0){
+        double valueDifference = -2;
+        while(valueDifference < -0.1 || valueDifference > 1.8){
         	valueDifference = RandomHelper.createNormal(Helper.getParams().getDouble("valueDifferenceMean"),
         			Helper.getParams().getDouble("valueDifferenceSD")).nextDouble();
         } //this makes a right-tailed normal distribution.
