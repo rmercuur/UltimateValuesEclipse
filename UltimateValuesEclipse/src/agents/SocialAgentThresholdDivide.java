@@ -27,10 +27,10 @@ public class SocialAgentThresholdDivide extends Agent {
     public SocialAgentThresholdDivide(int ID){
         super(ID);
         double valueDifference = -2;
-        while(valueDifference < -0.1 || valueDifference > 1.8){
+        while(valueDifference < -0.67 || valueDifference > 2.0){
         	valueDifference = RandomHelper.createNormal(Helper.getParams().getDouble("valueDifferenceMean"),
         			Helper.getParams().getDouble("valueDifferenceSD")).nextDouble();
-        } //this makes a right-tailed normal distribution.
+        } //this makes a right-tailed truncated normal distribution.
         wealth =new Wealth(1+(valueDifference/2));
         fairness=new Fairness(1-(valueDifference/2));
         values =new ArrayList<Value>();
@@ -59,7 +59,7 @@ public class SocialAgentThresholdDivide extends Agent {
     	double acceptUtility = wealth.thresholdDivideUtility(offer) ;
     			acceptUtility += fairness.thresholdDivideUtility(offer);
     	double rejectUtility = wealth.thresholdDivideUtility(0) ;
-    			rejectUtility += fairness.thresholdDivideUtility(50); //For fairness purposses its as if it was an even split;
+    			rejectUtility += fairness.thresholdDivideUtility((Helper.getParams().getInteger("pieSize") /2)); //For fairness purposses its as if it was an even split;
     	return acceptUtility > rejectUtility; //
     }
 

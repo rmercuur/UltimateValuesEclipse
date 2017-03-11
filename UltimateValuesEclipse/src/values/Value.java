@@ -83,7 +83,7 @@ public abstract class Value {
    public abstract double getGain(double result);
    
    public double thresholdDivideUtility(double result){
-	   return -(getThreshold()/(getGain(result) +0.5));
+	   return -(getThreshold()/(getGain(result) +0.0001));
    }
 
 

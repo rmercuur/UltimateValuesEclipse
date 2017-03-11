@@ -18,7 +18,7 @@ public class UltimateNVBuilder extends AbstractBuilder {
 	public void addAgents() {
 		for (int i=0; i < params.getInteger("agentCount"); i++){
 			//SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i);
-			RationalLearner1995 newAgent=new RationalLearner1995(i);
+			NormativeAgent1 newAgent=new NormativeAgent1(i);
 			context.add(newAgent);
 			agents.add(newAgent);
 		}

@@ -1,20 +1,20 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>GamesNonAggregateOffersOneTime</name>
+  <name>GamesNonAggregateOffers</name>
   <type>NON_AGGREGATE</type>
   <sourceType>ultimateValuesEclipse.Game</sourceType>
-  <inclTick>false</inclTick>
+  <inclTick>true</inclTick>
   <inclBatchRun>true</inclBatchRun>
   <inclRandomSeed>true</inclRandomSeed>
   <scheduleParams>
-    <start>1000.0</start>
-    <interval>0.0</interval>
+    <start>1.0</start>
+    <interval>1.0</interval>
     <priority>-Infinity</priority>
     <pType>LAST</pType>
     <duration>-1.0</duration>
-    <frequency>ONE_TIME</frequency>
-    <hashCode>-675101548</hashCode>
+    <frequency>REPEAT</frequency>
+    <hashCode>-1520020127</hashCode>
   </scheduleParams>
-  <atEnd>true</atEnd>
+  <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
       <string>Offer</string>
@@ -22,6 +22,14 @@
         <id>Offer</id>
         <className>ultimateValuesEclipse.Game</className>
         <methodName>getOffer</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>ID</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>ID</id>
+        <className>ultimateValuesEclipse.Game</className>
+        <methodName>getID</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

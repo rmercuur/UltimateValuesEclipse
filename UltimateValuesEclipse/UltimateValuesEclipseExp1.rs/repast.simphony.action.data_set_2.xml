@@ -1,6 +1,7 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>DataCollector</name>
-  <type>AGGREGATE</type>
+  <name>INeed</name>
+  <type>NON_AGGREGATE</type>
+  <sourceType>agents.SocialAgent2</sourceType>
   <inclTick>true</inclTick>
   <inclBatchRun>true</inclBatchRun>
   <inclRandomSeed>true</inclRandomSeed>
@@ -11,17 +12,32 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-960752144</hashCode>
+    <hashCode>-1502955838</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>lastRoundAvarageResult</string>
+      <string>ID</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>lastRoundAvarageResult</id>
-        <className>ultimateValuesEclipse.DataCollector</className>
-        <methodName>getLastRoundAvarageResult</methodName>
-        <aggType>SUM</aggType>
+        <id>ID</id>
+        <className>agents.SocialAgent2</className>
+        <methodName>getID</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>WNeed</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>WNeed</id>
+        <className>agents.SocialAgent2</className>
+        <methodName>getWNeed</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>FNeed</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>FNeed</id>
+        <className>agents.SocialAgent2</className>
+        <methodName>getFNeed</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

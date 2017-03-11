@@ -1,5 +1,5 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>RoundAcceptPercent</name>
+  <name>RoundOffers</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>true</inclBatchRun>
@@ -11,16 +11,16 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-750897510</hashCode>
+    <hashCode>1189905505</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Last Round Avarage Acceptrate</string>
+      <string>RoundOffers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Last Round Avarage Acceptrate</id>
+        <id>RoundOffers</id>
         <className>ultimateValuesEclipse.DataCollector</className>
-        <methodName>getLastRoundAvarageAcceptPercantage</methodName>
+        <methodName>getLastRoundAvarageOffer</methodName>
         <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>

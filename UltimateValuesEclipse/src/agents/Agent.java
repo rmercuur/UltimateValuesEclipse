@@ -19,6 +19,7 @@ public abstract class Agent {
 	public Agent(int ID){
 		this.ID = ID;
 	}
+	//Modeled as Offer (not as Demand)
 	@ScheduledMethod(start = 1, interval = 1, priority = 3)
 	public void propose(){
 		if(myGame.getProposer().equals(this)){

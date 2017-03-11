@@ -1,27 +1,27 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>AvarageAcceptOneTime</name>
-  <type>AGGREGATE</type>
-  <inclTick>true</inclTick>
+  <name>GamesNonAggregateOffersOneTime</name>
+  <type>NON_AGGREGATE</type>
+  <sourceType>ultimateValuesEclipse.Game</sourceType>
+  <inclTick>false</inclTick>
   <inclBatchRun>true</inclBatchRun>
   <inclRandomSeed>true</inclRandomSeed>
   <scheduleParams>
-    <start>500.0</start>
+    <start>1000.0</start>
     <interval>0.0</interval>
     <priority>-Infinity</priority>
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>ONE_TIME</frequency>
-    <hashCode>-1949703480</hashCode>
+    <hashCode>-675101548</hashCode>
   </scheduleParams>
   <atEnd>true</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>LastRoundAvarageAccept</string>
+      <string>Offer</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>LastRoundAvarageAccept</id>
-        <className>ultimateValuesEclipse.DataCollector</className>
-        <methodName>getLastRoundAvarageAcceptPercantage</methodName>
-        <aggType>SUM</aggType>
+        <id>Offer</id>
+        <className>ultimateValuesEclipse.Game</className>
+        <methodName>getOffer</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

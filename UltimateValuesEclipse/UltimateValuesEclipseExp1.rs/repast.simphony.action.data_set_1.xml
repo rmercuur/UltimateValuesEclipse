@@ -1,10 +1,9 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>INeed</name>
-  <type>NON_AGGREGATE</type>
-  <sourceType>agents.SocialAgent2</sourceType>
+  <name>Games</name>
+  <type>AGGREGATE</type>
   <inclTick>true</inclTick>
-  <inclBatchRun>true</inclBatchRun>
-  <inclRandomSeed>true</inclRandomSeed>
+  <inclBatchRun>false</inclBatchRun>
+  <inclRandomSeed>false</inclRandomSeed>
   <scheduleParams>
     <start>1.0</start>
     <interval>1.0</interval>
@@ -12,32 +11,26 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1502955838</hashCode>
+    <hashCode>-822844387</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>ID</string>
+      <string>outcome</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>ID</id>
-        <className>agents.SocialAgent2</className>
-        <methodName>getID</methodName>
+        <id>outcome</id>
+        <className>ultimateValuesEclipse.Game</className>
+        <methodName>getOutcome</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>WNeed</string>
+      <string>offer</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>WNeed</id>
-        <className>agents.SocialAgent2</className>
-        <methodName>getWNeed</methodName>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>FNeed</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>FNeed</id>
-        <className>agents.SocialAgent2</className>
-        <methodName>getFNeed</methodName>
+        <id>offer</id>
+        <className>ultimateValuesEclipse.Game</className>
+        <methodName>getOffer</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>
