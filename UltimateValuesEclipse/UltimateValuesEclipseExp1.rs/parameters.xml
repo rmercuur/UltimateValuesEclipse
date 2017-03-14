@@ -12,6 +12,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="normAgentCount" displayName="Number of Normative Agents" type="int" 
+						defaultValue="16" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
 				<parameter name="beta" displayName="Beta" type="double" 
 						defaultValue="0.1" 
 						isReadOnly="true" 
@@ -37,18 +43,18 @@
 									
 		/>
 				<parameter name="pieSize" displayName="Pie Size" type="int" 
-						defaultValue="100" 
+						defaultValue="1000" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>		<parameter name="valueDifferenceMean" displayName="Difference in Value Strength (mu)" type="double" 
-						defaultValue="0.35" 
+						defaultValue="0.16" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
 				<parameter name="valueDifferenceSD" displayName="Difference in Value Strength (SD)" type="double" 
-						defaultValue="0.95" 
+						defaultValue="0.72" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
@@ -75,6 +81,12 @@
 						defaultValue="TRUE" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
+				<parameter name="dg" displayName="dg (against division by zero)" type="double" 
+						defaultValue="0.5" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
 		

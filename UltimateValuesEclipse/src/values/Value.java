@@ -1,6 +1,7 @@
 package values;
 
 import repast.simphony.random.RandomHelper;
+import ultimateValuesEclipse.Helper;
 
 public abstract class Value {
    private double satisfaction;
@@ -83,7 +84,7 @@ public abstract class Value {
    public abstract double getGain(double result);
    
    public double thresholdDivideUtility(double result){
-	   return -(getThreshold()/(getGain(result) +0.0001));
+	   return -(getThreshold()/(getGain(result) + Helper.getParams().getDouble("dg")));
    }
 
 

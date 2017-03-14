@@ -5,11 +5,14 @@ import java.util.OptionalDouble;
 
 public class Round {
 	ArrayList<Game> games;
+	AbstractBuilder main;
 	int ID;
 	
-	public Round(int ID){
+	
+	public Round(int ID, AbstractBuilder main){
 		this.ID = ID;
 		games=new ArrayList<Game>();
+		this.main = main;
 	}
 	
 	public void addGame(Game game){

@@ -51,12 +51,16 @@ public class Game {
 		this.accept = accept;
 	}
 	
-	public int getOutcome(){ //defined as amount deliberator got;
+	public int getOutcome(){ //defined as amount responder got;
 		return isAccepted() ? getOffer():0; 
 	}
  
 	public int getOutcome(Agent asker){
-		return responder.equals(asker) ? getOutcome():(Helper.getParams().getInteger("pieSize")-getOutcome());
+		return isAccepted() ?
+			responder.equals(asker) ? 
+					getOutcome():
+				(Helper.getParams().getInteger("pieSize")-getOutcome()):
+					0;
 	}
 	
 
@@ -73,5 +77,13 @@ public class Game {
 
 	public void setThreshold(int threshold) {
 		this.threshold = threshold;
+	}
+	
+	//For Last Round Statistics
+	public boolean inLastRound(){
+		return round.main.rounds.get(round.main.rounds.size()-1).games.contains(this);
+	}
+	public int getOfferIfLastRound(){
+		return inLastRound()? getOffer():110;
 	}
 }

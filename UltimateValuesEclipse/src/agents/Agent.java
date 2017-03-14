@@ -52,5 +52,15 @@ public abstract class Agent {
 	public double getLastProfit(){
     	return myGame.getOutcome(this);
     }
+	public double getLastAction(){
+		return this.equals(myGame.getProposer()) ? 
+				myGame.getOffer() : myGame.isAccepted() ? 
+						1337:-1337;
+	}
+	public double getLastResponse(){
+		return this.equals(myGame.getProposer()) ? 
+				myGame.isAccepted() ? 
+						1337:-1337 :myGame.getOffer();
+	}
 	
 }

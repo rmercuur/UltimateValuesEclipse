@@ -26,11 +26,15 @@ public class SocialAgentThresholdDivide extends Agent {
 
     public SocialAgentThresholdDivide(int ID){
         super(ID);
-        double valueDifference = -2;
-        while(valueDifference < -0.67 || valueDifference > 2.0){
+        
+        //If you want to make truncated agent
+        double leftBound =-100;
+        double rightBound=100;
+        double valueDifference = -200;
+        while(valueDifference < leftBound || valueDifference > rightBound){
         	valueDifference = RandomHelper.createNormal(Helper.getParams().getDouble("valueDifferenceMean"),
         			Helper.getParams().getDouble("valueDifferenceSD")).nextDouble();
-        } //this makes a right-tailed truncated normal distribution.
+        } 
         wealth =new Wealth(1+(valueDifference/2));
         fairness=new Fairness(1-(valueDifference/2));
         values =new ArrayList<Value>();

@@ -105,7 +105,7 @@ public abstract class AbstractBuilder implements ContextBuilder<Object> {
 		games.clear(); //List doesn't become infinite, there are new games every time step.
 		int gameCount = params.getInteger("agentCount")/2; //Does it cast to int automaticly?
 		int roundID = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		Round newRound =new Round(roundID);
+		Round newRound =new Round(roundID,this);
 		rounds.add(newRound);
 		List<Agent> players =new ArrayList<Agent>(agents);
 		for(int i =0; i < gameCount; i++){	
