@@ -1,10 +1,9 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>IndividualDemandsLastRound</name>
-  <type>NON_AGGREGATE</type>
-  <sourceType>ultimateValuesEclipse.Game</sourceType>
+  <name>Games</name>
+  <type>AGGREGATE</type>
   <inclTick>true</inclTick>
-  <inclBatchRun>true</inclBatchRun>
-  <inclRandomSeed>true</inclRandomSeed>
+  <inclBatchRun>false</inclBatchRun>
+  <inclRandomSeed>false</inclRandomSeed>
   <scheduleParams>
     <start>1.0</start>
     <interval>1.0</interval>
@@ -12,24 +11,26 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1094097921</hashCode>
+    <hashCode>-822844387</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>ID</string>
+      <string>outcome</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>ID</id>
+        <id>outcome</id>
         <className>ultimateValuesEclipse.Game</className>
-        <methodName>getID</methodName>
+        <methodName>getOutcome</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Demand</string>
+      <string>offer</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Demand</id>
+        <id>offer</id>
         <className>ultimateValuesEclipse.Game</className>
-        <methodName>getDemandIfLastRound</methodName>
+        <methodName>getOffer</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

@@ -27,10 +27,10 @@ public class Round {
 		return average.orElse(-1); //gives -1 back if there is an error somewhere
 	}
 
-	public double getAvarageOffer() {
+	public double getAvarageDemand() {
 		OptionalDouble average = games
 	            .stream()
-	            .mapToInt(a -> a.getOffer())
+	            .mapToInt(a -> a.getDemand())
 	            .average();
 		return average.orElse(-1); //gives -1 back if there is an error somewhere
 	}

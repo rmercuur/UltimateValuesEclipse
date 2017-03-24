@@ -44,19 +44,19 @@ public class RationalLearner1995 extends Agent {
 	}
 
 	@Override
-	public boolean myRespond(int offer, Agent proposer) {
+	public boolean myRespond(int demand, Agent proposer) {
 		int threshold = Helper.weightedPick(respondQualities);
 		myGame.setThreshold(threshold);
-		return offer > threshold;
+		return demand < threshold;
 	}
 
 	@Override
 	public void update() {
 		if(myGame.getProposer().equals(this)){
 		//System.out.println("Offer to update:" + myGame.getOffer());
-		double oldQuality = proposeQualities.get(myGame.getOffer());
+		double oldQuality = proposeQualities.get(myGame.getDemand());
 		double newQuality = oldQuality+myGame.getOutcome(this);
-		proposeQualities.replace(myGame.getOffer(), newQuality);
+		proposeQualities.replace(myGame.getDemand(), newQuality);
 		//System.out.println("OldQ" + oldQuality + "newQ:" +
 		//		newQuality);
 		

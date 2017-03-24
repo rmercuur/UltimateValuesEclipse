@@ -18,8 +18,8 @@ public class DataCollector {
 		return main.rounds.get(main.rounds.size()-1).getAvarageResult();
 	}
 	
-	public double getLastRoundAvarageOffer(){
-		return main.rounds.get(main.rounds.size()-1).getAvarageOffer();
+	public double getLastRoundAvarageDemand(){
+		return main.rounds.get(main.rounds.size()-1).getAvarageDemand();
 	}
 	public double getLastRoundAvarageAcceptPercantage(){
 		return main.rounds.get(main.rounds.size()-1).getPercentageAccepted();

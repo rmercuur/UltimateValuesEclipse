@@ -1,26 +1,26 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>AverageDemandLastRoundOneTime</name>
+  <name>DataCollector</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>true</inclBatchRun>
   <inclRandomSeed>true</inclRandomSeed>
   <scheduleParams>
-    <start>10000.0</start>
-    <interval>0.0</interval>
+    <start>1.0</start>
+    <interval>1.0</interval>
     <priority>-Infinity</priority>
     <pType>LAST</pType>
     <duration>-1.0</duration>
-    <frequency>ONE_TIME</frequency>
-    <hashCode>-1622891169</hashCode>
+    <frequency>REPEAT</frequency>
+    <hashCode>-960752144</hashCode>
   </scheduleParams>
-  <atEnd>true</atEnd>
+  <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>LastRoundAverageDemand</string>
+      <string>lastRoundAvarageResult</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>LastRoundAverageDemand</id>
+        <id>lastRoundAvarageResult</id>
         <className>ultimateValuesEclipse.DataCollector</className>
-        <methodName>getLastRoundAvarageDemand</methodName>
+        <methodName>getLastRoundAvarageResult</methodName>
         <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>

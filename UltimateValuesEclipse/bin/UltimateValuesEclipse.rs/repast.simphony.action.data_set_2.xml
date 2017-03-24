@@ -1,7 +1,7 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>IndividualDemandsLastRound</name>
+  <name>INeed</name>
   <type>NON_AGGREGATE</type>
-  <sourceType>ultimateValuesEclipse.Game</sourceType>
+  <sourceType>agents.SocialAgent2</sourceType>
   <inclTick>true</inclTick>
   <inclBatchRun>true</inclBatchRun>
   <inclRandomSeed>true</inclRandomSeed>
@@ -12,7 +12,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1094097921</hashCode>
+    <hashCode>-1502955838</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
@@ -20,16 +20,24 @@
       <string>ID</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>ID</id>
-        <className>ultimateValuesEclipse.Game</className>
+        <className>agents.SocialAgent2</className>
         <methodName>getID</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Demand</string>
+      <string>WNeed</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Demand</id>
-        <className>ultimateValuesEclipse.Game</className>
-        <methodName>getDemandIfLastRound</methodName>
+        <id>WNeed</id>
+        <className>agents.SocialAgent2</className>
+        <methodName>getWNeed</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>FNeed</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>FNeed</id>
+        <className>agents.SocialAgent2</className>
+        <methodName>getFNeed</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

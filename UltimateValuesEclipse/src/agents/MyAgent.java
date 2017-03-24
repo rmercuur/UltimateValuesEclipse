@@ -13,8 +13,8 @@ public class MyAgent extends Agent {
 	}
 
 	@Override
-	public boolean myRespond(int offer, Agent proposer) {
-		return offer >0;
+	public boolean myRespond(int demand, Agent proposer) {
+		return demand >0;
 	}
 
 	@Override

@@ -9,36 +9,36 @@ import repast.simphony.random.RandomHelper;
 import ultimateValuesEclipse.Helper;
 
 public class NormativeAgent1 extends Agent {
-	List<Integer> seenOffers;
+	List<Integer> seenDemands;
 	List<Integer> seenResponds;
 	public NormativeAgent1(int ID) {
 		super(ID);
-		seenOffers=new ArrayList<Integer>();
+		seenDemands=new ArrayList<Integer>();
 		seenResponds=new ArrayList<Integer>();
 	}
 
 	@Override
 	public void update() {
 		//NB: Takes into account own actions as well;
-		seenOffers.add(myGame.getOffer());
+		seenDemands.add(myGame.getDemand());
 		seenResponds.add(myGame.isAccepted() ? 1:0);
 	}
 
 	@Override
 	public int myPropose(Agent responder) {
-		int offer;
-		if(seenOffers.isEmpty()){
-			offer= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
+		int demand;
+		if(seenDemands.isEmpty()){
+			demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
 		}
 		else{
-			OptionalDouble average = (OptionalDouble) seenOffers.stream().mapToDouble(a -> a).average();
-			offer = (int) average.getAsDouble();
+			OptionalDouble average = (OptionalDouble) seenDemands.stream().mapToDouble(a -> a).average();
+			demand = (int) average.getAsDouble();
 		}
-		return offer;
+		return demand;
 	}
 
 	@Override
-	public boolean myRespond(int offer, Agent proposer) {
+	public boolean myRespond(int demand, Agent proposer) {
 		double respond;
 		if(seenResponds.isEmpty()){
 			respond= RandomHelper.createUniform(0,1).nextDouble();

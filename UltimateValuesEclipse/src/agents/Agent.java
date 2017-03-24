@@ -19,19 +19,19 @@ public abstract class Agent {
 	public Agent(int ID){
 		this.ID = ID;
 	}
-	//Modeled as Offer (not as Demand)
+	//Modeled as Demand
 	@ScheduledMethod(start = 1, interval = 1, priority = 3)
 	public void propose(){
 		if(myGame.getProposer().equals(this)){
-			int offer = myPropose(myGame.getResponder());
-			myGame.setOffer(offer);
+			int demand = myPropose(myGame.getResponder());
+			myGame.setDemand(demand);
 		}
 	}
 	
 	@ScheduledMethod(start = 1, interval = 1, priority = 2)
 	public void respond(){
 		if(myGame.getResponder().equals(this)){
-			boolean accept =myRespond(myGame.getOffer(), myGame.getProposer());
+			boolean accept =myRespond(myGame.getDemand(), myGame.getProposer());
 			myGame.setAccepted(accept);
 		}
 	}
@@ -40,7 +40,7 @@ public abstract class Agent {
 	public abstract void update();
 	
 	public abstract int myPropose(Agent responder);
-	public abstract boolean myRespond(int offer, Agent proposer);
+	public abstract boolean myRespond(int demand, Agent proposer);
 	
 	public void setGame(Game myGame) {
 		this.myGame = myGame;
@@ -54,13 +54,13 @@ public abstract class Agent {
     }
 	public double getLastAction(){
 		return this.equals(myGame.getProposer()) ? 
-				myGame.getOffer() : myGame.isAccepted() ? 
+				myGame.getDemand() : myGame.isAccepted() ? 
 						1337:-1337;
 	}
 	public double getLastResponse(){
 		return this.equals(myGame.getProposer()) ? 
 				myGame.isAccepted() ? 
-						1337:-1337 :myGame.getOffer();
+						1337:-1337 :myGame.getDemand();
 	}
 	
 }

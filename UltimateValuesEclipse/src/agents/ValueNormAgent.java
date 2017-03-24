@@ -13,12 +13,12 @@ import values.Wealth;
 
 public class ValueNormAgent extends Agent {
 	List<Value> values;
-    List<Integer> seenOffers;
+    List<Integer> seenDemands;
 	List<Integer> seenResponds;
 	
     Value wealth;
     Value fairness;
-    int myBestOffer;
+    int myBestDemand;
     int myThreshold;
     
     boolean valueOrNorms;
@@ -37,73 +37,94 @@ public class ValueNormAgent extends Agent {
         values =new ArrayList<Value>();
         values.add(wealth);
         values.add(fairness);
-        myBestOffer = calculateMyBestOffer();
+        myBestDemand = calculateMyBestDemand();
         myThreshold = calculateMyThreshold();
         
         //Norms
-    	seenOffers=new ArrayList<Integer>();
+    	seenDemands=new ArrayList<Integer>();
 		seenResponds=new ArrayList<Integer>();
 		
 		//Value-Norm-Agent
 		 valueOrNorms = true; //true = Value, norm = False;
 	}
-
-	public int calculateMyBestOffer(){
-		TreeMap<Double, Integer> offerToUtility = new TreeMap<Double, Integer>();
+	
+	public ValueNormAgent(int ID, double valueDifference) {
+		super(ID);
 		
-		for(int offer = 0; offer < (Helper.getParams().getInteger("pieSize") +1); offer++){
-			double demand = Helper.getParams().getInteger("pieSize") - offer;
+		//Value
+        wealth =new Wealth(1+(valueDifference/2));
+        fairness=new Fairness(1-(valueDifference/2));
+        values =new ArrayList<Value>();
+        values.add(wealth);
+        values.add(fairness);
+        myBestDemand = calculateMyBestDemand();
+        myThreshold = calculateMyThreshold();
+        
+        //Norms
+    	seenDemands=new ArrayList<Integer>();
+		seenResponds=new ArrayList<Integer>();
+		
+		//Value-Norm-Agent
+		 valueOrNorms = true; //true = Value, norm = False;
+	}
+	
+
+	public int calculateMyBestDemand(){
+		TreeMap<Double, Integer> demandToUtility = new TreeMap<Double, Integer>();
+		
+		for(int demand = 0; demand < (Helper.getParams().getInteger("pieSize") +1); demand++){
 	//		System.out.println("For:" + demand);
 			
 			double utility = wealth.thresholdDivideUtility(demand); 
 					utility+=fairness.thresholdDivideUtility(demand);
-			offerToUtility.put(utility, offer); 
+			demandToUtility.put(utility, demand); 
 		}
-		return (int) offerToUtility.lastEntry().getValue(); 
+		return (int) demandToUtility.lastEntry().getValue(); 
 	}
 	
 	public int calculateMyThreshold(){
-		List<Integer> acceptableOffers =new ArrayList<Integer>();
-		for(int offer = 0; offer < (Helper.getParams().getInteger("pieSize") +1); offer++){
+		List<Integer> acceptableDemands =new ArrayList<Integer>();
+		for(int demand = 0; demand < (Helper.getParams().getInteger("pieSize") +1); demand++){
+			int offer = Helper.getParams().getInteger("pieSize") -demand;
 			double acceptUtility = wealth.thresholdDivideUtility(offer) ;
 			acceptUtility += fairness.thresholdDivideUtility(offer);
-			double rejectUtility = wealth.thresholdDivideUtility(0) ;
+			double rejectUtility = wealth.thresholdDivideUtility(1) ; //NB: zodat die gelijk aan R is...
 			rejectUtility += fairness.thresholdDivideUtility((Helper.getParams().getInteger("pieSize") /2)); //For fairness purposses its as if it was an even split;
-			if(acceptUtility > rejectUtility) acceptableOffers.add(offer);
+			if(acceptUtility > rejectUtility) acceptableDemands.add(demand);
 		}
-		return acceptableOffers.stream().mapToInt(i -> i).min().getAsInt(); //
+		return acceptableDemands.stream().mapToInt(i -> i).max().getAsInt(); //maximum demand that is still acceptable!
 	}
 	
 	
 	@Override
 	public void update() {
 		//Normative Update
-		seenOffers.add(myGame.getOffer());
+		seenDemands.add(myGame.getDemand());
 		seenResponds.add(myGame.isAccepted() ? 1:0);
 	}
 
 	@Override
 	public int myPropose(Agent responder) {
-		int offer;
+		int demand;
 		if(valueOrNorms){
-			offer= myBestOffer;
+			demand= myBestDemand;
 		}else{
-			if(seenOffers.isEmpty()){
-				offer= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
+			if(seenDemands.isEmpty()){
+				demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
 			}
 			else{
-				OptionalDouble average = (OptionalDouble) seenOffers.stream().mapToDouble(a -> a).average();
-				offer = (int) average.getAsDouble();
+				OptionalDouble average = (OptionalDouble) seenDemands.stream().mapToDouble(a -> a).average();
+				demand = (int) average.getAsDouble();
 			}
 		}
-		return offer;
+		return demand;
 	}
 
 	@Override
-	public boolean myRespond(int offer, Agent proposer) {
+	public boolean myRespond(int demand, Agent proposer) {
 		boolean respond;
 		if(valueOrNorms){
-			if(offer>myThreshold) respond = true;
+			if(demand<=myThreshold) respond = true; //threshold is still acceptable
 			else respond =false;
 		}else{
 			if(seenResponds.isEmpty()){

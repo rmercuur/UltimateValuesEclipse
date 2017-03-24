@@ -23,14 +23,16 @@ public class SocialAgentThresholdDivide extends Agent {
     List<Value> values;
     Value wealth;
     Value fairness;
-
+    double valueDifference;
+    
     public SocialAgentThresholdDivide(int ID){
         super(ID);
         
         //If you want to make truncated agent
         double leftBound =-100;
         double rightBound=100;
-        double valueDifference = -200;
+        
+        valueDifference = -200;
         while(valueDifference < leftBound || valueDifference > rightBound){
         	valueDifference = RandomHelper.createNormal(Helper.getParams().getDouble("valueDifferenceMean"),
         			Helper.getParams().getDouble("valueDifferenceSD")).nextDouble();
@@ -42,27 +44,37 @@ public class SocialAgentThresholdDivide extends Agent {
         values.add(fairness);
     }
     
+    public SocialAgentThresholdDivide(int ID, double valueDifference){
+        super(ID);
+        this.valueDifference = valueDifference;
+   
+        wealth =new Wealth(1+(valueDifference/2));
+        fairness=new Fairness(1-(valueDifference/2));
+        values =new ArrayList<Value>();
+        values.add(wealth);
+        values.add(fairness);
+    }
+    
     @Override
     public int myPropose(Agent responder) {
-    	TreeMap<Double, Integer> offerToUtility = new TreeMap<Double, Integer>();
+    	TreeMap<Double, Integer> demandToUtility = new TreeMap<Double, Integer>();
     	
-    	for(int offer = 0; offer < (Helper.getParams().getInteger("pieSize") +1); offer++){
-    		double demand = Helper.getParams().getInteger("pieSize") - offer;
-//    		System.out.println("For:" + demand);
+    	for(int demand = 0; demand < (Helper.getParams().getInteger("pieSize") +1); demand++){
     		
     		double utility = wealth.thresholdDivideUtility(demand); 
     				utility+=fairness.thresholdDivideUtility(demand);
-    		offerToUtility.put(utility, offer); 
+    		demandToUtility.put(utility, demand); 
     	}
     	
-    	return offerToUtility.lastEntry().getValue();
+    	return demandToUtility.lastEntry().getValue();
     }
 
     @Override
-    public boolean myRespond(int offer, Agent proposer) {
+    public boolean myRespond(int demand, Agent proposer) {
+    	int offer = Helper.getParams().getInteger("pieSize") - demand;
     	double acceptUtility = wealth.thresholdDivideUtility(offer) ;
     			acceptUtility += fairness.thresholdDivideUtility(offer);
-    	double rejectUtility = wealth.thresholdDivideUtility(0) ;
+    	double rejectUtility = wealth.thresholdDivideUtility(1) ; //zodat die gelijk aan R is;
     			rejectUtility += fairness.thresholdDivideUtility((Helper.getParams().getInteger("pieSize") /2)); //For fairness purposses its as if it was an even split;
     	return acceptUtility > rejectUtility; //
     }

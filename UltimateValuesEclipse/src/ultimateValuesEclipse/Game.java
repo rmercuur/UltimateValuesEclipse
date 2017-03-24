@@ -7,7 +7,7 @@ public class Game {
 	private Round round;
 	private Agent proposer;
 	private Agent responder;
-	private int offer;
+	private int demand;
 	private boolean accept;
 	private int threshold;
 	
@@ -35,12 +35,12 @@ public class Game {
 		this.responder = responder;
 	}
 
-	public int getOffer() {
-		return offer;
+	public int getDemand() {
+		return demand;
 	}
 
-	public void setOffer(int offer) {
-		this.offer = offer;
+	public void setDemand(int demand) {
+		this.demand = demand;
 	}
 
 	public boolean isAccepted() {
@@ -51,13 +51,13 @@ public class Game {
 		this.accept = accept;
 	}
 	
-	public int getOutcome(){ //defined as amount responder got;
-		return isAccepted() ? getOffer():0; 
+	public int getOutcome(){ //defined as amount proposer got;
+		return isAccepted() ? getDemand():0; 
 	}
  
 	public int getOutcome(Agent asker){
 		return isAccepted() ?
-			responder.equals(asker) ? 
+			proposer.equals(asker) ? 
 					getOutcome():
 				(Helper.getParams().getInteger("pieSize")-getOutcome()):
 					0;
@@ -83,7 +83,7 @@ public class Game {
 	public boolean inLastRound(){
 		return round.main.rounds.get(round.main.rounds.size()-1).games.contains(this);
 	}
-	public int getOfferIfLastRound(){
-		return inLastRound()? getOffer():110;
+	public int getDemandIfLastRound(){
+		return inLastRound()? getDemand():Helper.getParams().getInteger("pieSize")+100;
 	}
 }
