@@ -11,8 +11,8 @@ import ultimateValuesEclipse.Helper;
 public class NormativeAgent1 extends Agent {
 	List<Integer> seenDemands;
 	List<Integer> seenResponds;
-	public NormativeAgent1(int ID) {
-		super(ID);
+	public NormativeAgent1(int ID, boolean isProposer) {
+		super(ID,isProposer);
 		seenDemands=new ArrayList<Integer>();
 		seenResponds=new ArrayList<Integer>();
 	}

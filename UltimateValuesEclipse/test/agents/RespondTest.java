@@ -86,13 +86,13 @@ public class RespondTest {
 	  
 	@Test
 	public void testMyRespondSocialAgent() {
-		SocialAgentThresholdDivide tester=new SocialAgentThresholdDivide(0,valueDifference);
+		SocialAgentThresholdDivide tester=new SocialAgentThresholdDivide(0,valueDifference,true);
 		assertEquals(resultingResponse, tester.myRespond(demand, null));
 	}
 	
 	@Test
 	public void testMyRespondValueNormAgent() {
-		ValueNormAgent tester=new ValueNormAgent(0,valueDifference);
+		ValueNormAgent tester=new ValueNormAgent(0,valueDifference,true);
 		assertEquals(resultingResponse, tester.myRespond(demand, null));
 	}
 	

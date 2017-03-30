@@ -17,7 +17,7 @@ public class UltimateValuesBuilder extends AbstractBuilder {
 	@Override
 	public void addAgents() {
 		for (int i=0; i < params.getInteger("agentCount"); i++){
-			SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i);
+			SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i,true);
 			//RationalLearner1995 newAgent=new RationalLearner1995(i);
 			context.add(newAgent);
 			agents.add(newAgent);

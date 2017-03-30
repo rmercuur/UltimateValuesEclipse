@@ -23,8 +23,8 @@ public class ValueNormAgent extends Agent {
     
     boolean valueOrNorms;
     
-	public ValueNormAgent(int ID) {
-		super(ID);
+	public ValueNormAgent(int ID, boolean isProposer) {
+		super(ID,isProposer);
 		
 		//Values
 	    double valueDifference = -2;
@@ -48,8 +48,8 @@ public class ValueNormAgent extends Agent {
 		 valueOrNorms = true; //true = Value, norm = False;
 	}
 	
-	public ValueNormAgent(int ID, double valueDifference) {
-		super(ID);
+	public ValueNormAgent(int ID, double valueDifference, boolean isProposer) {
+		super(ID,isProposer);
 		
 		//Value
         wealth =new Wealth(1+(valueDifference/2));

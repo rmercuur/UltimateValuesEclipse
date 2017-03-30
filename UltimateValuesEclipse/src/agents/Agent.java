@@ -15,8 +15,10 @@ public abstract class Agent {
 	private int ID;
 	private Grid<Object> myGrid;
 	protected Game myGame;
+	private boolean proposer;
 	
-	public Agent(int ID){
+	public Agent(int ID, boolean isProposer){
+		this.proposer = isProposer;
 		this.ID = ID;
 	}
 	//Modeled as Demand
@@ -62,5 +64,10 @@ public abstract class Agent {
 				myGame.isAccepted() ? 
 						1337:-1337 :myGame.getDemand();
 	}
-	
+	public boolean isResponder() {
+		return !proposer;
+	}
+	public boolean isProposer(){
+		return proposer;
+	}
 }

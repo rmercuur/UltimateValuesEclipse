@@ -7,13 +7,16 @@ import java.util.OptionalInt;
 
 import repast.simphony.random.RandomHelper;
 import ultimateValuesEclipse.Helper;
-
-public class NormativeAgent2 extends Agent {
+/*
+ * Does a random action if no accept and reject seen;
+ * Does a random action, in the sense, that it has equal chance to accept and reject;
+ */
+public class NormativeAgent4 extends Agent {
 	List<Integer> seenDemands;
 	List<Integer> seenRespondsAccepted;
 	List<Integer> seenRespondsRejected;
 	
-	public NormativeAgent2(int ID, boolean isProposer) {
+	public NormativeAgent4(int ID, boolean isProposer) {
 		super(ID,isProposer);
 		seenDemands=new ArrayList<Integer>();
 		seenRespondsAccepted=new ArrayList<Integer>();
@@ -37,38 +40,29 @@ public class NormativeAgent2 extends Agent {
 	@Override
 	public int myPropose(Agent responder) {
 		int demand;
-		if(seenRespondsAccepted.isEmpty() &&seenRespondsRejected.isEmpty()){
-			demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
-		}
+		if(!seenRespondsAccepted.isEmpty() &&!seenRespondsRejected.isEmpty()){
+			demand = (int)
+					(seenRespondsRejected.stream().mapToDouble(a -> a).min().getAsDouble() +
+					seenRespondsAccepted.stream().mapToDouble(a -> a).max().getAsDouble()) /
+					2;}
 		else{
-			if(seenRespondsAccepted.isEmpty() &&!seenRespondsRejected.isEmpty()) demand = 
-				(int) seenRespondsRejected.stream().mapToDouble(a -> a).average().getAsDouble();
-			else{
-				if(!seenRespondsAccepted.isEmpty() &&seenRespondsRejected.isEmpty()) demand = 
-						(int) seenRespondsAccepted.stream().mapToDouble(a -> a).average().getAsDouble();
-				else{
-					demand = (int)
-							(seenRespondsRejected.stream().mapToDouble(a -> a).min().getAsDouble() +
-							seenRespondsAccepted.stream().mapToDouble(a -> a).max().getAsDouble()) /
-							2;
-						
-				}
-			}
+			demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
 		}
 		return demand;
 	}
 
 	@Override
 	public boolean myRespond(int demand, Agent proposer) {
-		double threshold =0;
+		boolean accept;
 		if(seenDemands.isEmpty()){
-			threshold= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
+			accept= RandomHelper.createUniform(0,1).nextDouble() <0.5;
 		}
 		else{
 			OptionalDouble averageSeenDemand = (OptionalDouble) seenDemands.stream().mapToDouble(a -> a).average();
-			threshold = (int) averageSeenDemand.getAsDouble();
+			int threshold = (int) averageSeenDemand.getAsDouble();
+			accept = demand <= threshold;
 		}
-		return demand <= threshold; //> 0.5 signifies that more than half has been accepts, so accept;
+		return accept;
 	}
 
 }

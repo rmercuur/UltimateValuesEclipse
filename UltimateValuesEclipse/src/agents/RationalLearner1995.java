@@ -13,8 +13,8 @@ public class RationalLearner1995 extends Agent {
 	HashMap<Integer, Double> proposeQualities;
 	HashMap<Integer, Double> respondQualities;
 	
-	public RationalLearner1995(int ID){
-		super(ID);
+	public RationalLearner1995(int ID, boolean isProposer) {
+		super(ID,isProposer);
 		proposeQualities=new HashMap<Integer, Double>();
 		respondQualities=new HashMap<Integer, Double>();
 		double pieSize = Helper.getParams().getInteger("pieSize");

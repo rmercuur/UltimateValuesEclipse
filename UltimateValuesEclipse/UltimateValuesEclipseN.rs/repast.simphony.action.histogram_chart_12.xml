@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.HistogramChartDescriptor>
-  <name>OffersHistogram</name>
-  <dataSet>GamesNonAggregateOffers</dataSet>
-  <xAxisLabel>Offer (Money)</xAxisLabel>
-  <yAxisLabel>Amount</yAxisLabel>
-  <chartTitle>Offers</chartTitle>
+  <name>IndividualDemandsLastRoundHistogram</name>
+  <dataSet>IndividualDemandsLastRound</dataSet>
+  <xAxisLabel>Size of Demand</xAxisLabel>
+  <yAxisLabel>Amount of Demands</yAxisLabel>
+  <chartTitle>Individual Demands Last Round Histogram</chartTitle>
   <type>HISTOGRAM</type>
   <background>
     <red>192</red>
@@ -19,12 +19,12 @@
   </gridLineColor>
   <showGrid>true</showGrid>
   <showLegend>true</showLegend>
-  <histType>DYNAMIC</histType>
+  <histType>STATIC</histType>
   <binCount>10</binCount>
-  <sourceId>Offer</sourceId>
+  <sourceId>Demand</sourceId>
   <outOfRange>IGNORE</outOfRange>
   <min>0.0</min>
-  <max>0.0</max>
+  <max>1000.0</max>
   <barColor>
     <red>255</red>
     <green>0</green>

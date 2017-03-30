@@ -7,13 +7,15 @@ import java.util.OptionalInt;
 
 import repast.simphony.random.RandomHelper;
 import ultimateValuesEclipse.Helper;
-
-public class NormativeAgent2 extends Agent {
+/*
+ * Does a random action if no accept and reject seen;
+ */
+public class NormativeAgent3 extends Agent {
 	List<Integer> seenDemands;
 	List<Integer> seenRespondsAccepted;
 	List<Integer> seenRespondsRejected;
 	
-	public NormativeAgent2(int ID, boolean isProposer) {
+	public NormativeAgent3(int ID, boolean isProposer) {
 		super(ID,isProposer);
 		seenDemands=new ArrayList<Integer>();
 		seenRespondsAccepted=new ArrayList<Integer>();
@@ -37,23 +39,13 @@ public class NormativeAgent2 extends Agent {
 	@Override
 	public int myPropose(Agent responder) {
 		int demand;
-		if(seenRespondsAccepted.isEmpty() &&seenRespondsRejected.isEmpty()){
-			demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
-		}
+		if(!seenRespondsAccepted.isEmpty() &&!seenRespondsRejected.isEmpty()){
+			demand = (int)
+					(seenRespondsRejected.stream().mapToDouble(a -> a).min().getAsDouble() +
+					seenRespondsAccepted.stream().mapToDouble(a -> a).max().getAsDouble()) /
+					2;}
 		else{
-			if(seenRespondsAccepted.isEmpty() &&!seenRespondsRejected.isEmpty()) demand = 
-				(int) seenRespondsRejected.stream().mapToDouble(a -> a).average().getAsDouble();
-			else{
-				if(!seenRespondsAccepted.isEmpty() &&seenRespondsRejected.isEmpty()) demand = 
-						(int) seenRespondsAccepted.stream().mapToDouble(a -> a).average().getAsDouble();
-				else{
-					demand = (int)
-							(seenRespondsRejected.stream().mapToDouble(a -> a).min().getAsDouble() +
-							seenRespondsAccepted.stream().mapToDouble(a -> a).max().getAsDouble()) /
-							2;
-						
-				}
-			}
+			demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
 		}
 		return demand;
 	}

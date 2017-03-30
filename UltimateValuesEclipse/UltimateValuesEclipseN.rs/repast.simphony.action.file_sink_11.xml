@@ -1,0 +1,15 @@
+<repast.simphony.data2.engine.FileSinkDescriptor>
+  <name>IndividualDemandsorResponds</name>
+  <dataSet>IndividualDemandsFromAgentObject</dataSet>
+  <delimiter>,</delimiter>
+  <format>TABULAR</format>
+  <sourceIds class="linked-hash-set">
+    <string>run</string>
+    <string>tick</string>
+    <string>random_seed</string>
+    <string>ID</string>
+    <string>LastAction</string>
+  </sourceIds>
+  <fileName>IndividualDemandsOrResponds.txt</fileName>
+  <addTimeStamp>true</addTimeStamp>
+</repast.simphony.data2.engine.FileSinkDescriptor>

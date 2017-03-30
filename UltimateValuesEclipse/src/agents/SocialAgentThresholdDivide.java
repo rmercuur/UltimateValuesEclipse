@@ -25,8 +25,8 @@ public class SocialAgentThresholdDivide extends Agent {
     Value fairness;
     double valueDifference;
     
-    public SocialAgentThresholdDivide(int ID){
-        super(ID);
+    public SocialAgentThresholdDivide(int ID, boolean isProposer) {
+		super(ID,isProposer);
         
         //If you want to make truncated agent
         double leftBound =-100;
@@ -44,8 +44,8 @@ public class SocialAgentThresholdDivide extends Agent {
         values.add(fairness);
     }
     
-    public SocialAgentThresholdDivide(int ID, double valueDifference){
-        super(ID);
+    public SocialAgentThresholdDivide(int ID, double valueDifference, boolean isProposer) {
+		super(ID,isProposer);
         this.valueDifference = valueDifference;
    
         wealth =new Wealth(1+(valueDifference/2));

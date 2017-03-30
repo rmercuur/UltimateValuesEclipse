@@ -18,13 +18,13 @@ public class UltimateNVBuilder extends AbstractBuilder {
 	public void addAgents() {
 		//Norm Agents
 		for (int i=0; i < Helper.getParams().getInteger("normAgentCount"); i++){
-			NormativeAgent1 newAgent=new NormativeAgent1(i);
+			NormativeAgent1 newAgent=new NormativeAgent1(i,true);
 			context.add(newAgent);
 			agents.add(newAgent);
 		}
 		//Value Based Agents
 		for (int i=Helper.getParams().getInteger("normAgentCount"); i < params.getInteger("agentCount"); i++){
-			SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i);
+			SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i,true);
 			context.add(newAgent);
 			agents.add(newAgent);
 		}

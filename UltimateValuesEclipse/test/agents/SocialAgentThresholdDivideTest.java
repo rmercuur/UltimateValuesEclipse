@@ -58,7 +58,7 @@ public class SocialAgentThresholdDivideTest {
 	  
 	@Test
 	public void testMyPropose() {
-		SocialAgentThresholdDivide tester=new SocialAgentThresholdDivide(0,valueDifference);
+		SocialAgentThresholdDivide tester=new SocialAgentThresholdDivide(0,valueDifference,true);
 		assertEquals(resultingDemand, tester.myPropose(null)); //argument does not matter
 	}
 

@@ -24,8 +24,8 @@ public class SocialAgent2 extends Agent {
     Value wealth;
     Value fairness;
 
-    public SocialAgent2(int ID){
-        super(ID);
+    public SocialAgent2(int ID, boolean isProposer) {
+		super(ID,isProposer);
         //wealth =new Wealth(RandomHelper.nextDoubleFromTo(0.5, 1.5));
        // fairness =new Fairness(RandomHelper.nextDoubleFromTo(0.5, 1.5));
         wealth = new Wealth(1);

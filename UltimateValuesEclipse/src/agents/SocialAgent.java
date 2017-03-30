@@ -13,8 +13,8 @@ public class SocialAgent extends Agent {
     Value selfEnhancement;
     Value selfTranscendence;
 
-    public SocialAgent(int ID){
-        super(ID);
+    public SocialAgent(int ID, boolean isProposer) {
+		super(ID,isProposer);
         selfEnhancement =new SelfEnhancement(RandomHelper.nextDoubleFromTo(0.5, 1.5));
         selfTranscendence =new SelfTranscendence(RandomHelper.nextDoubleFromTo(0.5, 1.5));
         values =new ArrayList<Value>();
