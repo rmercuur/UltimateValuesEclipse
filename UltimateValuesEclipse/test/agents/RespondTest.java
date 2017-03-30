@@ -46,12 +46,26 @@ public class RespondTest {
         								  {0,825,true},
         								  {0,826,false}, //alleen true als rejectUtility wealth(1!)
         								  {0,827,false},
+        								  
         								  {0,828,false},
         								  {0,829,false},
         								  {0,824,true},
         								  {0,807,true},
         								  {0,712,true},
-        								  {0,400,true}};
+        								  
+        								  {0,400,true},
+        								  {0.1,836,true},
+        								  {0.1,837,false},
+        								  {1,917,true},
+        								  {1,918,false},
+        								  
+        								  {2,998,true},
+        								  {2,999,false},
+        								  {-1,486,true},
+        								  {-1,487,false},
+        								  {-1.9,55,true},
+        								  
+        								  {-1.9,56,false}};
         return Arrays.asList(data);
     }
     

@@ -92,6 +92,7 @@ public class ValueNormAgent extends Agent {
 			rejectUtility += fairness.thresholdDivideUtility((Helper.getParams().getInteger("pieSize") /2)); //For fairness purposses its as if it was an even split;
 			if(acceptUtility > rejectUtility) acceptableDemands.add(demand);
 		}
+		
 		return acceptableDemands.stream().mapToInt(i -> i).max().getAsInt(); //maximum demand that is still acceptable!
 	}
 	
