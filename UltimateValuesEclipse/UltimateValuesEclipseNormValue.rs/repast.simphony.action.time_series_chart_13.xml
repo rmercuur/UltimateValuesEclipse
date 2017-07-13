@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.TimeSeriesChartDescriptor>
-  <name>Round Accept Percentage</name>
-  <dataSet>RoundAcceptPercent</dataSet>
+  <name>AverageAcceptLastRound</name>
+  <dataSet>AverageAcceptLastRound</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
-  <yAxisLabel>Lat Round Accept Percentage</yAxisLabel>
-  <chartTitle>Last Round Accept Percentage</chartTitle>
+  <yAxisLabel>Average Accept</yAxisLabel>
+  <chartTitle>Average Accept Last Round</chartTitle>
   <type>TIME_SERIES</type>
   <background>
     <red>192</red>
@@ -21,9 +21,9 @@
   <showLegend>true</showLegend>
   <seriesIds>
     <entry>
-      <string>Last Round Avarage Acceptrate</string>
+      <string>AverageAcceptLastRound</string>
       <SeriesData>
-        <label>Last Round Avarage Acceptrate</label>
+        <label>AverageAcceptLastRound</label>
         <color>
           <red>0</red>
           <green>0</green>

@@ -24,14 +24,12 @@ public class UltimateNormBuilder extends AbstractBuilder {
 	public void addAgents() {
 		int halfAgentCount = params.getInteger("agentCount")/2;
 		for (int i=0; i < halfAgentCount; i++){
-			//SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i);
-			NormativeAgent3 newAgent=new NormativeAgent3(i,true);
+			NormativeAgent5 newAgent=new NormativeAgent5(i,true);
 			context.add(newAgent);
 			agents.add(newAgent);
 		}
 		for (int i= halfAgentCount; i < params.getInteger("agentCount"); i++){
-			//SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i);
-			NormativeAgent3 newAgent=new NormativeAgent3(i,false);
+			NormativeAgent5 newAgent=new NormativeAgent5(i,false);
 			context.add(newAgent);
 			agents.add(newAgent);
 		}

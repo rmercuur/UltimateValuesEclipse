@@ -1,10 +1,10 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>LastRoundIndividualOffers</name>
+  <name>IndividualDemandsFromAgentObject</name>
   <type>NON_AGGREGATE</type>
-  <sourceType>ultimateValuesEclipse.Game</sourceType>
+  <sourceType>agents.Agent</sourceType>
   <inclTick>true</inclTick>
-  <inclBatchRun>false</inclBatchRun>
-  <inclRandomSeed>false</inclRandomSeed>
+  <inclBatchRun>true</inclBatchRun>
+  <inclRandomSeed>true</inclRandomSeed>
   <scheduleParams>
     <start>1.0</start>
     <interval>1.0</interval>
@@ -12,7 +12,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1153781664</hashCode>
+    <hashCode>1162734975</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
@@ -20,16 +20,16 @@
       <string>ID</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>ID</id>
-        <className>ultimateValuesEclipse.Game</className>
+        <className>agents.Agent</className>
         <methodName>getID</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>OfferIfLastRound</string>
+      <string>LastAction</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>OfferIfLastRound</id>
-        <className>ultimateValuesEclipse.Game</className>
-        <methodName>getOfferIfLastRound</methodName>
+        <id>LastAction</id>
+        <className>agents.Agent</className>
+        <methodName>getLastAction</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

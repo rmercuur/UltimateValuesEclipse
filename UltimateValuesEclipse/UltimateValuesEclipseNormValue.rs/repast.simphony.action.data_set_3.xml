@@ -1,9 +1,9 @@
 <repast.simphony.data2.engine.DataSetDescriptor>
-  <name>Games</name>
+  <name>AverageAcceptLastRound</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
-  <inclBatchRun>false</inclBatchRun>
-  <inclRandomSeed>false</inclRandomSeed>
+  <inclBatchRun>true</inclBatchRun>
+  <inclRandomSeed>true</inclRandomSeed>
   <scheduleParams>
     <start>1.0</start>
     <interval>1.0</interval>
@@ -11,26 +11,17 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-822844387</hashCode>
+    <hashCode>1094097921</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>outcome</string>
+      <string>AverageAcceptLastRound</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>outcome</id>
-        <className>ultimateValuesEclipse.Game</className>
-        <methodName>getOutcome</methodName>
-        <aggType>MEAN</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>offer</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>offer</id>
-        <className>ultimateValuesEclipse.Game</className>
-        <methodName>getOffer</methodName>
-        <aggType>MEAN</aggType>
+        <id>AverageAcceptLastRound</id>
+        <className>ultimateValuesEclipse.DataCollector</className>
+        <methodName>getLastRoundAvarageAcceptPercantage</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

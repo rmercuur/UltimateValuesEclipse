@@ -48,13 +48,13 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>		<parameter name="valueDifferenceMean" displayName="Difference in Value Strength (mu)" type="double" 
-						defaultValue="0.16" 
+						defaultValue="0.025" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
 				<parameter name="valueDifferenceSD" displayName="Difference in Value Strength (SD)" type="double" 
-						defaultValue="0.72" 
+						defaultValue="1.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
