@@ -8,28 +8,34 @@ import java.util.OptionalInt;
 import repast.simphony.random.RandomHelper;
 import ultimateValuesEclipse.Helper;
 /*
- * Does a random action if no accept and reject seen;
- * Does a random action, in the sense, that it has equal chance to accept and reject;
- * Instead of a random action, does the action first round agents do.
+ * Act out of norm or does action humans do the first-round
+ * 
  */
 public class NormativeAgent5 extends Agent {
 	List<Integer> seenDemands;
 	List<Integer> seenRespondsAccepted;
 	List<Integer> seenRespondsRejected;
+	int initialAction;
 	
 	public NormativeAgent5(int ID, boolean isProposer) {
 		super(ID,isProposer);
 		seenDemands=new ArrayList<Integer>();
 		seenRespondsAccepted=new ArrayList<Integer>();
 		seenRespondsRejected=new ArrayList<Integer>();	
+		initialAction = Helper.getParams().getInteger("initialActionNorm");
+		//0 = Human
+		//1 = mu:0PieSize
+		//2 = mu:0.25PieSize
+		//3 = mu:0.5PieSize
+		//4 = mu:0.75PieSize
+		//5 = mu:1.0PieSize
+		
 	}
 
 	@Override
 	public void update() {
-		//if responder (maar ze blijven toch op dezelfde plek)
 		seenDemands.add(myGame.getDemand());
-		
-		//if Proposer (maar ze blijven toch op dezelfde plek)
+	
 		if(myGame.isAccepted()){
 			seenRespondsAccepted.add(myGame.getDemand());
 		}
@@ -40,18 +46,23 @@ public class NormativeAgent5 extends Agent {
 
 	@Override
 	public int myPropose(Agent responder) {
-		int demand;
+		int demand =0;
 		if(!seenRespondsAccepted.isEmpty() &&!seenRespondsRejected.isEmpty()){
-			demand = (int)
+			demand = (int) //do the norm
 					(seenRespondsRejected.stream().mapToDouble(a -> a).min().getAsDouble() +
 					seenRespondsAccepted.stream().mapToDouble(a -> a).max().getAsDouble()) /
 					2;}
-		else{
-			demand = -10;
-			double mean = 0.5618 * Helper.getParams().getInteger("pieSize");
-			double sd = 0.1289 * Helper.getParams().getInteger("pieSize");
-			while(demand < 0 || demand > Helper.getParams().getInteger("pieSize")){
-				demand= RandomHelper.createNormal(mean, sd).nextInt();
+		else{//if no norm available
+			if(initialAction ==0){ 
+				demand = -10; //do the action first-round agents do
+				double mean = 0.5618 * Helper.getParams().getInteger("pieSize");
+				double sd = 0.1289 * Helper.getParams().getInteger("pieSize");
+				while(demand < 0 || demand > Helper.getParams().getInteger("pieSize")){
+					demand= RandomHelper.createNormal(mean, sd).nextInt();
+				}
+			}
+			if(initialAction ==1){ 
+				demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
 			}
 		}
 		return demand;
@@ -60,7 +71,6 @@ public class NormativeAgent5 extends Agent {
 	@Override
 	public boolean myRespond(int demand, Agent proposer) {
 		boolean accept;
-		
 		
 		if(seenDemands.isEmpty()){
 			double acceptRate;

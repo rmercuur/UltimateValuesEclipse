@@ -1,2 +1,9 @@
 UltimateValuesModel and UltimateValuesEclipse NormaValue load the same builder
 namely UltimateNVBuilder 
+
+Note that the agents added are 
+	NormativeAgent5
+	SocialAgentThresholdDivide
+
+There are also some Tests
+
