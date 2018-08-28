@@ -83,11 +83,12 @@ public abstract class AbstractBuilder implements ContextBuilder<Object> {
 	 */
 	public void makeGrid() {
 		myGridFactory = GridFactoryFinder.createGridFactory(null);
-		
+		int gameCount = params.getInteger("agentCount")/2;
+		int amountOfRounds = params.getInteger("EndTime");
 		grid = myGridFactory.createGrid("grid", context,
 				new GridBuilderParameters<Object>(new WrapAroundBorders(),
 				new RandomGridAdder<Object>(),
-				true, 200, 200));
+				true, gameCount, amountOfRounds+2)); //width and height are amount of games and space for 3;
 	}	
 	 
 	/**

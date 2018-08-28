@@ -8,6 +8,5 @@
 	<classpathentry kind="con" path="REPAST_SIMPHONY_SUPPORT"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="/JUnitParams/src/main/java/junitparams"/>
-	<classpathentry kind="lib" path="lib/opencsv-3.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

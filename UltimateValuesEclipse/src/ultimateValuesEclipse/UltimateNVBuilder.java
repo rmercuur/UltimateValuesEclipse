@@ -69,8 +69,9 @@ public class UltimateNVBuilder extends AbstractBuilder {
 			newRound.addGame(newGame);
 			games.add(newGame);
 			context.add(newGame);
-			Helper.moveToObject(grid, agent1, newGame);
-			Helper.moveToObject(grid, agent2, newGame);
+			grid.moveTo(agent1, i+1,rounds.size());
+			grid.moveTo(agent2, i+1,rounds.size()+1);
+			grid.moveTo(newGame, i+1, rounds.size()-1); //put at 3,6,etc. and agents beneath;
 		}
 	}
 

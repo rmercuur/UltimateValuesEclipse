@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameters;
@@ -35,6 +36,7 @@ public class Helper {
 		Helper.moveTo(grid, movingObject, pt.getX(), pt.getY());
 	}
 	
+	
 	public static void moveTo(Grid<Object> grid, Object movingObject, int x, int y){
 		if(Helper.getParams().getBoolean("GUI")){
 			Iterator<Object> iter = grid.getObjectsAt(x,y).iterator();
@@ -45,7 +47,7 @@ public class Helper {
 				if(obje instanceof Agent) hasAgent = true;
 			}*/
 			if(hasAgent){
-				moveTo(grid, movingObject, x+1,y); //Maybe getNeighbor or something?
+				moveTo(grid, movingObject, x,y-1); //Maybe getNeighbor or something?
 			}else{
 				grid.moveTo(movingObject, x,y);
 			}
@@ -82,15 +84,16 @@ public class Helper {
 	}
 	
 	//Wrapper
-	public static void mapAdd(HashMap<Object, Double> map,
+	public static void mapAdd(Map<Object, Double> map,
 			Object key){
 		mapAdd(map, key, 1);
 	}
 	
 	/*
 	 * Adds 'add'-points to HashMap entry;
+	 * If it isn't there add it, else update it.
 	 */
-	public static void mapAdd(HashMap<Object, Double> map,
+	public static void mapAdd(Map<Object, Double> map,
 			Object key, double add) {
 		Double currentValue = map.get(key);
 		if(currentValue == null){		//no Entry yet
@@ -101,6 +104,7 @@ public class Helper {
 			map.put(key, currentValue);
 		}
 	}
+	
 	
 	public static Parameters getParams(){
 		return RunEnvironment.getInstance().getParameters();

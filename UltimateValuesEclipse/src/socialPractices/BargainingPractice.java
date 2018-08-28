@@ -2,7 +2,9 @@ package socialPractices;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ultimateValuesEclipse.Helper;
 import values.Fairness;
@@ -16,7 +18,8 @@ public class BargainingPractice extends SocialPractice {
 	
 	
 	@Override
-	public void makePlanPattern(){
+	public Graph<AbstractAction> makePlanPattern(Graph<AbstractAction> myPlanPattern){
+		//Possible Actions
 		List<Action> demands=new ArrayList<Action>();
 		List<Action> fairDemands=new ArrayList<Action>();
 		List<Action> highDemands=new ArrayList<Action>();
@@ -34,9 +37,26 @@ public class BargainingPractice extends SocialPractice {
 		reject.add(new Action(false));
 		
 		
-		List<Class<? extends Value>> relevantValues=Arrays.asList(Fairness.class,Wealth.class);
+		Map<Class<? extends Value>, Boolean> valueOrientationFairness
+				=new HashMap<Class<? extends Value>, Boolean>();
+		valueOrientationFairness.put(Fairness.class, true);
+		valueOrientationFairness.put(Wealth.class, false);
+		Map<Class<? extends Value>, Boolean> valueOrientationWealth
+				=new HashMap<Class<? extends Value>, Boolean>();
+		valueOrientationWealth.put(Fairness.class, false);
+		valueOrientationWealth.put(Wealth.class, true);
 		
-		Graph<AbstractAction> myPlanPattern =new Graph<AbstractAction>();
+		Map<Class<? extends Value>, Boolean> valueOrientationBothPos
+			=new HashMap<Class<? extends Value>, Boolean>();
+		valueOrientationBothPos.put(Fairness.class, true);
+		valueOrientationBothPos.put(Wealth.class, true);
+
+		Map<Class<? extends Value>, Boolean> valueOrientationBothNeg
+			=new HashMap<Class<? extends Value>, Boolean>();
+		valueOrientationBothNeg.put(Fairness.class, false);
+		valueOrientationBothNeg.put(Wealth.class, false);
+
+		myPlanPattern =new Graph<AbstractAction>();
 		AbstractAction startA=new AbstractAction("start",
 				null,
 				null); //start is just placeholder
@@ -44,7 +64,7 @@ public class BargainingPractice extends SocialPractice {
 		myPlanPattern.addVertex(startV);
 
 		AbstractAction fairDemandA=new AbstractAction("fairDemand",
-				relevantValues,
+				valueOrientationFairness,
 				fairDemands);
 		Vertex<AbstractAction> fairDemandV=new Vertex<AbstractAction>("fairDemand",fairDemandA);
 		myPlanPattern.addVertex(fairDemandV);
@@ -52,36 +72,36 @@ public class BargainingPractice extends SocialPractice {
 		myPlanPattern.addEdge(startV, fairDemandV, 0);
 
 		AbstractAction highDemandA=new AbstractAction("highDemand",
-				relevantValues,
+				valueOrientationWealth,
 				highDemands);
 		Vertex<AbstractAction> highDemandV=new Vertex<AbstractAction>("highDemand",highDemandA);
 		myPlanPattern.addVertex(highDemandV);
 		
-		myPlanPattern.addEdge(startV, fairDemandV, 0);
+		myPlanPattern.addEdge(startV, highDemandV, 0);
 		
 		AbstractAction acceptFairA=new AbstractAction("acceptFair",
-				relevantValues,
+				valueOrientationBothPos,
 				accept);
 		Vertex<AbstractAction> acceptFairV=new Vertex<AbstractAction>("acceptFair",acceptFairA);
 		myPlanPattern.addVertex(acceptFairV);
 		myPlanPattern.addEdge(fairDemandV, acceptFairV, 0);
 		
-		AbstractAction rejectFairA=new AbstractAction("acceptFair",
-				relevantValues,
+		AbstractAction rejectFairA=new AbstractAction("rejectFair",
+				valueOrientationBothNeg,
 				reject);
 		Vertex<AbstractAction> rejectFairV=new Vertex<AbstractAction>("rejectFair",rejectFairA);
 		myPlanPattern.addVertex(rejectFairV);
 		myPlanPattern.addEdge(fairDemandV, rejectFairV, 0);
 		
 		AbstractAction acceptHighA=new AbstractAction("acceptHigh",
-				relevantValues,
+				valueOrientationWealth,
 				accept);
 		Vertex<AbstractAction> acceptHighV=new Vertex<AbstractAction>("acceptHigh",acceptHighA);
 		myPlanPattern.addVertex(acceptHighV);
 		myPlanPattern.addEdge(highDemandV, acceptHighV, 0);
 		
 		AbstractAction rejectHighA=new AbstractAction("rejectHigh",
-				relevantValues,
+				valueOrientationFairness,
 				reject);
 		Vertex<AbstractAction> rejectHighV=new Vertex<AbstractAction>("rejectHigh",rejectHighA);
 		myPlanPattern.addVertex(rejectHighV);
@@ -98,5 +118,7 @@ public class BargainingPractice extends SocialPractice {
 		myPlanPattern.addEdge(rejectHighV, endV, 0);
 		
 		myPlanPattern.setRootVertex(startV);
+		
+		return myPlanPattern;
 	}
 }

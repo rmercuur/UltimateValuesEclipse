@@ -1,0 +1,13 @@
+<repast.simphony.data2.engine.FileSinkDescriptor>
+  <name>AverageAcceptLastRoundOneTime</name>
+  <dataSet>AverageAcceptLastRoundOneTime</dataSet>
+  <delimiter>,</delimiter>
+  <format>TABULAR</format>
+  <sourceIds class="linked-hash-set">
+    <string>run</string>
+    <string>random_seed</string>
+    <string>AverageAcceptLastRound</string>
+  </sourceIds>
+  <fileName>AverageAcceptLastRoundOneTime.txt</fileName>
+  <addTimeStamp>true</addTimeStamp>
+</repast.simphony.data2.engine.FileSinkDescriptor>

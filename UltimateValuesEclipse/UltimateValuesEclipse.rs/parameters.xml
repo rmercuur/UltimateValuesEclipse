@@ -66,7 +66,7 @@
 									
 		/>
 				<parameter name="EndTime" displayName="Simulation End Time (Ticks)" type="int" 
-						defaultValue="1000" 
+						defaultValue="30" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									

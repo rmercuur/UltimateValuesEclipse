@@ -16,6 +16,9 @@ public class Action {
 	public String getMyAction() {
 		return myAction;
 	}
+	public boolean getMyActionAsBoolean(){
+		return Boolean.parseBoolean(myAction);
+	}
 	public int getMyActionAsInteger(){
 		return Integer.parseInt(myAction);
 	}

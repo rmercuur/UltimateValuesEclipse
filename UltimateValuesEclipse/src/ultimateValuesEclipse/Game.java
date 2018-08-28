@@ -10,6 +10,7 @@ public class Game {
 	private int demand;
 	private boolean accept;
 	private int threshold;
+	private int stage; //stage 1=nothing happend, stage2=demand happened, stage3=response happened
 	
 	
 	
@@ -18,6 +19,7 @@ public class Game {
 		this.round = round;
 		this.setProposer(proposer);
 		this.setResponder(responder);
+		this.setStage(1);
 	}
 	
 	public Agent getProposer() {
@@ -41,6 +43,7 @@ public class Game {
 
 	public void setDemand(int demand) {
 		this.demand = demand;
+		this.setStage(2);
 	}
 
 	public boolean isAccepted() {
@@ -49,6 +52,7 @@ public class Game {
 
 	public void setAccepted(boolean accept) {
 		this.accept = accept;
+		this.setStage(3);
 	}
 	
 	public int getOutcome(){ //defined as amount proposer got;
@@ -85,5 +89,13 @@ public class Game {
 	}
 	public int getDemandIfLastRound(){
 		return inLastRound()? getDemand():Helper.getParams().getInteger("pieSize")+100;
+	}
+
+	public int getStage() {
+		return stage;
+	}
+
+	private void setStage(int stage) {
+		this.stage = stage;
 	}
 }

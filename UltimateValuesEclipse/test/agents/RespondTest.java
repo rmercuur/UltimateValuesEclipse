@@ -40,7 +40,7 @@ public class RespondTest {
     @Parameters
     public static Collection<Object[]> data() {
     	
-    	
+    	//This thus gives: valueDifference, demand, and what it should say
         Object[][] data = new Object[][] {{0,100,true},
 				  						  {0,824,true},
         								  {0,825,true},
@@ -92,7 +92,7 @@ public class RespondTest {
 	
 	@Test
 	public void testMyRespondValueNormAgent() {
-		ValueNormAgent tester=new ValueNormAgent(0,valueDifference,true);
+		TestValueNormAgent tester=new TestValueNormAgent(0,valueDifference,true);
 		assertEquals(resultingResponse, tester.myRespond(demand, null));
 	}
 	

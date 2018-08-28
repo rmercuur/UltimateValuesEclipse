@@ -13,11 +13,6 @@ import values.Value;
 import values.Wealth;
 
 /*
- * This social agent will have two values:
- * - fairness
- * - wealth
- * 
- * It has thresholds in these values and memory.
  */
 public class SocialAgentThresholdDivide extends Agent {
     List<Value> values;

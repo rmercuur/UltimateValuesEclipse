@@ -133,4 +133,8 @@ public class Edge<T> {
     tmp.append("]");
     return tmp.toString();
   }
+
+	public void up() {
+		cost++;
+	}
 }

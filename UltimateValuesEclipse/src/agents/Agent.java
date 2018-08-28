@@ -10,16 +10,24 @@ import repast.simphony.random.RandomHelper;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridPoint;
 import ultimateValuesEclipse.Game;
+import repast.simphony.ui.probe.ProbedProperty;
 
 public abstract class Agent {
 	private int ID;
+	public double g;
+	public double r;
+	public double b;
 	private Grid<Object> myGrid;
 	protected Game myGame;
 	private boolean proposer;
+
 	
 	public Agent(int ID, boolean isProposer){
 		this.proposer = isProposer;
 		this.ID = ID;
+		this.g = RandomHelper.nextDouble();
+		this.r = RandomHelper.nextDouble();
+		this.b = RandomHelper.nextDouble();
 	}
 	//Modeled as Demand
 	@ScheduledMethod(start = 1, interval = 1, priority = 3)
