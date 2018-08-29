@@ -24,7 +24,13 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="initialActionNorm" displayName="Type of Initial Action Norm" type="int" 
+				<parameter name="initialActionNorm" displayName="Type of Initial Demand (Normative Agent)" type="int" 
+						defaultValue="1" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="initialAcceptRateNorm" displayName="Type of Initial Accept (Normative Agent)" type="int" 
 						defaultValue="1" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
