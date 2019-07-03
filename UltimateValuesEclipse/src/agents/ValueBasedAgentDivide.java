@@ -21,7 +21,7 @@ public class ValueBasedAgentDivide extends Agent {
     Value fairness;
     
     public ValueBasedAgentDivide(int ID, boolean isProposer) {
-		super(ID,isProposer);
+		super(ID,isProposer); 
         
         //If you want to make truncated agent
         double leftBound =-100;
