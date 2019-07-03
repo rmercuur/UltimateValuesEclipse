@@ -12,8 +12,14 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="normAgentCount" displayName="Number of Normative Agents" type="int" 
-						defaultValue="16" 
+				<parameter name="LHEAgentCount" displayName="Number of Learning Homo Economicus" type="int" 
+						defaultValue="32" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+			<parameter name="normAgentCount" displayName="Number of Normative Agents" type="int" 
+						defaultValue="0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									

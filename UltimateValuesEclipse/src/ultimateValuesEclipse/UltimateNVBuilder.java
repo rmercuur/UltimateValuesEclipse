@@ -8,6 +8,8 @@ import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.random.RandomHelper;
 import agents.*;
 
+
+//This one is used by the normal UVE model runner
 public class UltimateNVBuilder extends AbstractBuilder {
 
 	@Override
@@ -22,6 +24,18 @@ public class UltimateNVBuilder extends AbstractBuilder {
 
 	@Override
 	public void addAgents() {
+		int halfLHEAgentCount = params.getInteger("LHEAgentCount")/2;
+			for (int i=0; i < halfLHEAgentCount; i++){
+				RationalLearner1995 newAgent=new RationalLearner1995(i,true);
+				context.add(newAgent);
+				agents.add(newAgent);
+			}
+			for (int i= halfLHEAgentCount; i < params.getInteger("LHEAgentCount"); i++){
+				RationalLearner1995 newAgent=new RationalLearner1995(i,false);
+				context.add(newAgent);
+				agents.add(newAgent);
+			}
+		
 		int halfNormAgentCount = params.getInteger("normAgentCount")/2;
 			for (int i=0; i < halfNormAgentCount; i++){
 				NormativeAgent5 newAgent=new NormativeAgent5(i,true);
@@ -33,16 +47,16 @@ public class UltimateNVBuilder extends AbstractBuilder {
 				context.add(newAgent);
 				agents.add(newAgent);
 			}
-		//Value Based Agents
-		int valueAgentCount = params.getInteger("agentCount") - params.getInteger("normAgentCount");
+		//Value Based Agents (remaining agents)
+		int valueAgentCount = params.getInteger("agentCount") - params.getInteger("normAgentCount") - params.getInteger("LHEAgentCount");
 		int halfValueAgentCount = valueAgentCount/2;
 			for (int i=0; i < halfValueAgentCount; i++){
-				SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i,true);
+				ValueBasedAgentDivide newAgent=new ValueBasedAgentDivide(i,true);
 				context.add(newAgent);
 				agents.add(newAgent);
 			}
 			for (int i=halfValueAgentCount; i < valueAgentCount; i++){
-				SocialAgentThresholdDivide newAgent=new SocialAgentThresholdDivide(i,false);
+				ValueBasedAgentDivide newAgent=new ValueBasedAgentDivide(i,false);
 				context.add(newAgent);
 				agents.add(newAgent);
 			}

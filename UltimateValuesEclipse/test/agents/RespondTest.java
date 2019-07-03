@@ -86,7 +86,7 @@ public class RespondTest {
 	  
 	@Test
 	public void testMyRespondSocialAgent() {
-		SocialAgentThresholdDivide tester=new SocialAgentThresholdDivide(0,valueDifference,true);
+		ValueBasedAgentDivide tester=new ValueBasedAgentDivide(0,valueDifference,true);
 		assertEquals(resultingResponse, tester.myRespond(demand, null));
 	}
 	

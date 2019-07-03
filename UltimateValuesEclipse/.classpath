@@ -7,6 +7,6 @@
 	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
 	<classpathentry kind="con" path="REPAST_SIMPHONY_SUPPORT"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/JUnitParams/src/main/java/junitparams"/>
+	<classpathentry kind="lib" path="C:/Program Files/RepastSimphony-2.3.1/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

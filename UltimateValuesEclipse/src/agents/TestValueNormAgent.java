@@ -115,7 +115,7 @@ public class TestValueNormAgent extends Agent {
 		int demand;
 		if(valueOrNorms){
 			demand= myBestDemand;
-		}else{
+		}else{			
 			if(seenDemands.isEmpty()){ //if no norm, do uniform
 				demand= RandomHelper.createUniform(0,Helper.getParams().getInteger("pieSize")).nextInt();
 			}

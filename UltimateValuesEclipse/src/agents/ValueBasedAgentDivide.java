@@ -12,15 +12,15 @@ import values.Fairness;
 import values.Value;
 import values.Wealth;
 
-/*
+/* This is the agent used in the simulation to simulate value-based agents
+ *
  */
-public class SocialAgentThresholdDivide extends Agent {
+public class ValueBasedAgentDivide extends Agent {
     List<Value> values;
     Value wealth;
     Value fairness;
-    double valueDifference;
     
-    public SocialAgentThresholdDivide(int ID, boolean isProposer) {
+    public ValueBasedAgentDivide(int ID, boolean isProposer) {
 		super(ID,isProposer);
         
         //If you want to make truncated agent
@@ -39,7 +39,7 @@ public class SocialAgentThresholdDivide extends Agent {
         values.add(fairness);
     }
     
-    public SocialAgentThresholdDivide(int ID, double valueDifference, boolean isProposer) {
+    public ValueBasedAgentDivide(int ID, double valueDifference, boolean isProposer) {
 		super(ID,isProposer);
         this.valueDifference = valueDifference;
    

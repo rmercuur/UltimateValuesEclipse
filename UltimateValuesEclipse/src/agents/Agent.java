@@ -20,8 +20,9 @@ public abstract class Agent {
 	private Grid<Object> myGrid;
 	protected Game myGame;
 	private boolean proposer;
-
+	public double valueDifference;
 	
+
 	public Agent(int ID, boolean isProposer){
 		this.proposer = isProposer;
 		this.ID = ID;
@@ -77,5 +78,8 @@ public abstract class Agent {
 	}
 	public boolean isProposer(){
 		return proposer;
+	}
+	public double getValueDifference() {
+		return valueDifference;
 	}
 }

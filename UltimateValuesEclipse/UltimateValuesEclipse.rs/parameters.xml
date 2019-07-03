@@ -18,7 +18,25 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="normAgentCount" displayName="Number of Normative Agents" type="int" 
+				<parameter name="LHEAgentCount" displayName="Number of Learning Homo Economicus" type="int" 
+						defaultValue="0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="LHE:forceHumanAction" displayName="LHE:First Round Human" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
+				<parameter name="initialActionNorm" displayName="Type of Initial Demand (Normative Agent)" type="int" 
+						defaultValue="1" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+			<parameter name="normAgentCount" displayName="Number of Normative Agents" type="int" 
 						defaultValue="16" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
